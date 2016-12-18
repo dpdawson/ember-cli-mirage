@@ -5,6 +5,9 @@ import _get from 'lodash/object/get';
 import _ from 'lodash';
 
 export default Serializer.extend({
+  idForModel(model) {
+    return model.id;
+  },
 
   keyForModel(modelName) {
     return dasherize(modelName);
@@ -130,7 +133,7 @@ export default Serializer.extend({
 
     let hash = {
       type: this.typeKeyForModel(model),
-      id: model.id,
+      id: this.idForModel(model),
       attributes: attrs
     };
 
